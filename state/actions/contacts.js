@@ -7,6 +7,13 @@ export function updateContactList(contacts) {
   }
 }
 
+export function selectContact(contact) {
+  return {
+    type: 'SELECT_CONTACT',
+    contact,
+  }
+}
+
 export function fetchContacts() {
   // Gets phones contacts
   return function(dispatch) {

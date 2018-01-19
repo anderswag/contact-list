@@ -16,7 +16,7 @@ import Contacts from 'react-native-contacts'
 
 import ContactList from './ContactList'
 
-import { fetchContacts } from '../state/actions/contacts';
+import { selectContact, fetchContacts } from '../state/actions/contacts';
 
 class ContactListContainer extends Component {
 
@@ -26,10 +26,13 @@ class ContactListContainer extends Component {
   }
 
   render() {
-    const { contacts } = this.props
+    const { contacts, selectContact} = this.props
     return (
       <View style={styles.mainContainer}>
-        <ContactList contacts={contacts}/>
+        <ContactList
+          selectContact={selectContact}
+          contacts={contacts}
+        />
       </View>
     )
   }
@@ -51,7 +54,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchContacts: () => dispatch(fetchContacts())
+    fetchContacts: () => dispatch(fetchContacts()),
+    selectContact: (item) => dispatch(selectContact(item)),
   }
 }
 

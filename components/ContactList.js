@@ -13,8 +13,14 @@ import ContactItem from "./ContactItem"
 
 class ContactList extends Component {
 
+  constructor(props) {
+    super(props)
+    this.renderItem = this.renderItem.bind(this)
+  }
+
   renderItem({item}) {
-    return <ContactItem item={item}/>
+    const { selectContact } = this.props
+    return <ContactItem selectContact={selectContact} item={item}/>
   }
 
   render() {
