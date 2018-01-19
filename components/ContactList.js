@@ -19,8 +19,8 @@ class ContactList extends Component {
   }
 
   renderItem({item}) {
-    const { selectContact } = this.props
-    return <ContactItem selectContact={selectContact} item={item}/>
+    const { selectContact, selected } = this.props
+    return <ContactItem selected={selected.includes(item.recordID)} selectContact={selectContact} item={item}/>
   }
 
   render() {

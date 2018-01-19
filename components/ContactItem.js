@@ -8,20 +8,18 @@ import {
   View
 } from 'react-native';
 
+import CheckBox from "./CheckBox"
 /* Required props: item, selectContact */
 
 class ContactItem extends Component {
   render() {
-    const { item, selectContact } = this.props
-    console.log("SDF")
-    console.log(selectContact)
-    console.log(item.recordID)
+    const { item, selectContact, selected } = this.props
     return (
-      <TouchableHighlight onPress={() => selectContact(item)} style={styles.itemContainer}>
+      <TouchableHighlight style={styles.itemContainer}>
         <View style={styles.itemInnerContainer}>
           <Text style={styles.contactInfo}>{`${item.givenName} ${item.familyName}`}</Text>
           <Text style={styles.contactInfo}>{`${item.phoneNumbers[0].number}`}</Text>
-
+          <CheckBox handleClick={selectContact} item={item} check={selected}/>
         </View>
       </TouchableHighlight>
     )

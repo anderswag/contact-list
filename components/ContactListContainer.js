@@ -18,6 +18,8 @@ import ContactList from './ContactList'
 
 import { selectContact, fetchContacts } from '../state/actions/contacts';
 
+// Higher order component, responsible for providing data to LOC
+
 class ContactListContainer extends Component {
 
   componentDidMount() {
@@ -26,12 +28,13 @@ class ContactListContainer extends Component {
   }
 
   render() {
-    const { contacts, selectContact} = this.props
+    const { contacts, selected, selectContact} = this.props
     return (
       <View style={styles.mainContainer}>
         <ContactList
           selectContact={selectContact}
           contacts={contacts}
+          selected={selected}
         />
       </View>
     )
@@ -49,6 +52,7 @@ const mapStateToProps = (state) => {
   console.log(state)
   return {
     contacts: state.updateStore ? state.updateStore.contacts : null,
+    selected: state.updateStore ? state.updateStore.selected : null,
   }
 }
 

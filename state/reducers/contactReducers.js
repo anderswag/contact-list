@@ -13,9 +13,16 @@ export function updateStore(state = initialState, action) {
       }
 
     case 'SELECT_CONTACT':
-      return {
-        ...state,
-        ["selected"] : state.selected.concat(action.contact.recordID)
+      if (state.selected.includes(action.contact.recordID)) {
+        return {
+          ...state,
+          ["selected"] : state.selected.filter(item => item !== action.contact.recordID)
+        }
+      } else {
+        return {
+          ...state,
+          ["selected"] : state.selected.concat(action.contact.recordID)
+        }
       }
     default:
       return state;

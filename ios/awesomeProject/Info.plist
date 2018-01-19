@@ -53,5 +53,11 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+	</array>
+	<key></key>
+	<string></string>
 </dict>
 </plist>
